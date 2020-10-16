@@ -10,6 +10,10 @@ const classesControllers = new ClassesController();
 const connectionsController = new ConnectionsController();
 const usersController = new UsersController();
 
+routes.get('/', function (req, res) {
+    res.status(201).send("API Test");
+});
+
 routes.post('/api/signup', usersController.signUp);
 routes.post('/api/login', usersController.signIn);
 
