@@ -13,8 +13,8 @@ const usersController = new UsersController();
 routes.post('/api/signup', usersController.signUp);
 routes.post('/api/login', usersController.signIn);
 
-routes.get('/api/connections', authMiddleware, connectionsController.index);
-routes.post('/api/connections', authMiddleware, connectionsController.create);
+routes.get('/api/connections', connectionsController.index);
+routes.post('/api/connections', connectionsController.create);
 
 routes.get('/api/classes', authMiddleware, classesControllers.index);
 routes.post('/api/classes', authMiddleware, classesControllers.create);
