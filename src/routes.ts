@@ -20,9 +20,9 @@ routes.post('/api/login', usersController.signIn);
 routes.get('/api/connections', connectionsController.index);
 routes.post('/api/connections', connectionsController.create);
 
-routes.get('/api/classes', authMiddleware, classesControllers.index);
-routes.post('/api/classes', authMiddleware, classesControllers.create);
+routes.get('/api/classes', classesControllers.index);
+routes.post('/api/classes', classesControllers.create);
 
-routes.get('/api/users', authMiddleware, usersController.index);
+routes.get('/api/users', usersController.index);
 
 export default routes;
