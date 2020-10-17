@@ -44,7 +44,7 @@ export default class StudentsController {
         return res.json(user);
     }
     async signUp(req: Request, res: Response) {
-        const { name, email, lastname, password } = req.body;
+        const { name, email, , password } = req.body;
 
         const user = await db('users').where({
             email: email
@@ -58,7 +58,6 @@ export default class StudentsController {
 
         const userData = {
             name: name,
-            lastname: lastname,
             email: email,
             password: passwordHash,
             avatar: "https://t3.ftcdn.net/jpg/00/64/67/80/240_F_64678017_zUpiZFjj04cnLri7oADnyMH0XBYyQghG.jpg",
