@@ -44,7 +44,7 @@ export default class StudentsController {
         return res.json(user);
     }
     async signUp(req: Request, res: Response) {
-        const { name, email, , password } = req.body;
+        const { name, email, password } = req.body;
 
         const user = await db('users').where({
             email: email
