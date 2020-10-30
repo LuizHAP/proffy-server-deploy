@@ -1,0 +1,13 @@
+version: "3.4"
+
+services:
+  postgres:
+    image: postgres:11
+    volumes:
+      - type: volume
+        source: postgres
+        target: /postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
