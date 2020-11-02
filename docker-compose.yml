@@ -3,16 +3,30 @@ version: "3.8"
 services:
   db:
     image: postgres
-    environment:
-      - POSTGRES_DB=proffy
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=docker
-  web:
-    build: .
-    command: yarn dev
-    volumes:
-      - .:/code
+    container_name: db_proffy
+    restart: always
     ports:
-      - "3000:3000"
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=${PG_DATABASE}
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+  api:
+    image: node:latest
+    container_name: api
+    restart: always
     depends_on:
       - db
+    ports:
+      - 3333:3333
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+    working_dir: /usr/src/app
+    command: bash -c "yarn && yarn run knex:migrate && yarn start"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
