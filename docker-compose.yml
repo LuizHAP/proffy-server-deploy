@@ -24,7 +24,7 @@ services:
     volumes:
       - .:/usr/src/app
     working_dir: /usr/src/app
-    command: bash -c "yarn && yarn run knex:migrate && yarn start"
+    command: bash -c "npm i -g knex && yarn install && yarn build && yarn run knex:migrate && yarn start"
     logging:
       driver: "json-file"
       options:
